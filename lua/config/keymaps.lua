@@ -9,3 +9,12 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Replace word under cursor" }
 )
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+vim.keymap.set("n", "<leader>cp", function()
+  local path = vim.fn.expand("%:p"):match("src/.*")
+  if path then
+    vim.fn.setreg("+", path)
+    vim.notify("Copied: " .. path)
+  else
+    vim.notify('No "src/" in path', vim.log.levels.WARN)
+  end
+end, { desc = "Copy path from src/" })
