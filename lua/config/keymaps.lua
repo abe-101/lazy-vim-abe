@@ -18,3 +18,6 @@ vim.keymap.set("n", "<leader>cp", function()
     vim.notify('No "src/" in path', vim.log.levels.WARN)
   end
 end, { desc = "Copy path from src/" })
+vim.keymap.set("n", "<leader>ip", function()
+  vim.cmd("normal! ofrom IPython import embed; embed()")
+end, { desc = "Insert IPython debugger" })
